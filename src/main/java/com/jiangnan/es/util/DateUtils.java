@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @description TODO
+ * @description 日期工具类
  * @author ywu@wuxicloud.com
  * 2015年5月16日 上午10:48:57
  */
@@ -30,7 +30,7 @@ public class DateUtils {
 	 * @param pattern 日期格式,eg:yyyy-MM-dd HH:mm:ss
 	 * @return java.util.Date
 	 */
-	public static Date parse(String dateStr,String pattern){
+	public static Date parse(String dateStr,String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		try {
 			return sdf.parse(dateStr);
@@ -46,7 +46,7 @@ public class DateUtils {
 	 * @param dateStr 字符串格式的日期
 	 * @return java.util.Date
 	 */
-	public static Date parse(String dateStr){
+	public static Date parse(String dateStr) {
 		return parse(dateStr,STANDARD_FORMAT);
 	}
 	
@@ -56,7 +56,7 @@ public class DateUtils {
 	 * @param pattern 日期格式,eg:yyyy-MM-dd
 	 * @return 字符串格式的日期
 	 */
-	public static String format(Date date,String pattern){
+	public static String format(Date date,String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		return sdf.format(date);
 	}
@@ -66,15 +66,15 @@ public class DateUtils {
 	 * @param date 日期对象
 	 * @return 字符串格式的日期
 	 */
-	public static String format(Date date){
-		return format(date,STANDARD_FORMAT);
+	public static String format(Date date) {
+		return format(date, STANDARD_FORMAT);
 	}
 	
 	/**
 	 * 得到当前时间
 	 * @return 长整形的时间
 	 */
-	public static long getCurrentTime(){
+	public static long getCurrentTime() {
 		return new Date().getTime();
 	}
 	
@@ -84,9 +84,9 @@ public class DateUtils {
 	 * @param date2
 	 * @return true:date1和date2表示同一天,false:date1和date2表示不同的天
 	 */
-	public static boolean isSameDay(Date date1,Date date2){
+	public static boolean isSameDay(Date date1,Date date2) {
 		String pattern = "yyyy-MM-dd";
-		return format(date1, pattern).equals(format(date2,pattern));
+		return format(date1, pattern).equals(format(date2, pattern));
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class DateUtils {
 	 * @param date2
 	 * @return 间隔天数
 	 */
-	public static int getDayDiff(Date date1,Date date2){
+	public static int getDayDiff(Date date1,Date date2) {
 		String pattern = "yyyy-MM-dd";
 		String s1 = format(date1, pattern);
 		String s2 = format(date2, pattern);
@@ -116,7 +116,7 @@ public class DateUtils {
 	 * @param count > 0表示增加,< 0表示减少
 	 * @return 增加或减少count毫秒后的时间
 	 */
-	public static Date modify(Date date,int count){
+	public static Date modify(Date date, int count) {
 		return new Date(date.getTime() + count);
 	}
 	
@@ -125,7 +125,7 @@ public class DateUtils {
 	 * @param date
 	 * @return 一天中最后的时间,eg:2014-12-04 23:59:59
 	 */
-	public static Date getLastTimeByDate(Date date){
+	public static Date getLastTimeByDate(Date date) {
 		String dateStr = format(date, "yyyy-MM-dd");
 		return parse(dateStr + " 23:59:59");
 	}
@@ -135,7 +135,7 @@ public class DateUtils {
 	 * @param date
 	 * @return 一天中最开始的时间,eg:2014-12-04 00:00:00
 	 */
-	public static Date getFirstTimeByDate(Date date){
+	public static Date getFirstTimeByDate(Date date) {
 		String dateStr = format(date, "yyyy-MM-dd");
 		return parse(dateStr + " 00:00:00");
 	}
@@ -157,8 +157,8 @@ public class DateUtils {
 	 * @param interval 分割后的时间片段中的开始时间和结束时间之间间隔的天数,0表示开始时间和结束时间都在同一天
 	 * @return 间隔的时间片段,格式为yyyy-MM-dd HH:mm:ss
 	 */
-	public static List<String[]> getDateSegment(Date date1,Date date2,int interval){
-		return getDateSegment(date1,date2,STANDARD_FORMAT,interval);
+	public static List<String[]> getDateSegment(Date date1, Date date2, int interval) {
+		return getDateSegment(date1, date2, STANDARD_FORMAT, interval);
 	}
 	
 	/**
@@ -178,8 +178,8 @@ public class DateUtils {
 	 * @param interval 分割后的时间片段中的开始时间和结束时间之间间隔的天数,0表示开始时间和结束时间都在同一天
 	 * @return 间隔的时间片段,格式为yyyy-MM-dd HH:mm:ss
 	 */
-	public static List<String[]> getDateSegment(Date date1,Date date2,String pattern){
-		return getDateSegment(date1,date2,pattern,0);
+	public static List<String[]> getDateSegment(Date date1, Date date2, String pattern) {
+		return getDateSegment(date1, date2, pattern, 0);
 	}
 	
 	/**
@@ -199,8 +199,8 @@ public class DateUtils {
 	 * @param interval 分割后的时间片段中的开始时间和结束时间之间间隔的天数,0表示开始时间和结束时间都在同一天
 	 * @return 间隔的时间片段,格式为yyyy-MM-dd HH:mm:ss,片段中开始时间和结束时间在同一天
 	 */
-	public static List<String[]> getDateSegment(Date date1,Date date2){
-		return getDateSegment(date1,date2,STANDARD_FORMAT,0);
+	public static List<String[]> getDateSegment(Date date1, Date date2) {
+		return getDateSegment(date1, date2, STANDARD_FORMAT, 0);
 	}
 	
 	/**
@@ -221,53 +221,53 @@ public class DateUtils {
 	 * @param interval 分割后的时间片段中的开始时间和结束时间之间间隔的天数,0表示开始时间和结束时间都在同一天
 	 * @return 间隔的时间片段
 	 */
-	public static List<String[]> getDateSegment(Date date1,Date date2,String pattern,int interval){
+	public static List<String[]> getDateSegment(Date date1, Date date2, String pattern, int interval) {
 		//排序,时间小的在前,时间大的在后
 		Date startTime = null;
 		Date endTime = null;
-		if(date1.getTime() < date2.getTime()){
+		if (date1.getTime() < date2.getTime()) {
 			startTime = date1;
 			endTime = date2;
-		}else{
+		} else {
 			startTime = date2;
 			endTime = date1;
 		}
 		
 		List<String[]> segments = new ArrayList<String[]>();
 		
-		if(isSameDay(startTime, endTime)){	//如果是同一天
+		if (isSameDay(startTime, endTime)) {	//如果是同一天
 			String[] segment = {format(startTime, pattern),format(endTime, pattern)};
 			segments.add(segment);
-		}else{
-			if(interval < 0){
+		} else {
+			if (interval < 0) {
 				throw new IllegalArgumentException("参数interval不合法");
 			}
 			//获取两个时间之间间隔的天数
 			int diff = getDayDiff(startTime, endTime) + 1;
 			//lookup times
 			int count = (diff % (interval + 1) == 0) ? (diff / (interval + 1)) : (diff / (interval + 1) + 1);
-			if(count == 0){		//如果分段的间隔不小于两个时间间隔的天数,不够分割,返回开始时间和结束时间
+			if (count == 0) {		//如果分段的间隔不小于两个时间间隔的天数,不够分割,返回开始时间和结束时间
 				String[] segment = {format(startTime, pattern),format(endTime, pattern)};
 				segments.add(segment);
-			}else{
-				for(int i = 0;i < count;i++){
-					if(i == 0){		//第一段
-						String[] segment = {format(startTime,pattern),format(getLastTimeByDate(modify(startTime, interval * A_DAY)), pattern)};
+			} else {
+				for (int i = 0;i < count;i++) {
+					if (i == 0) {		//第一段
+						String[] segment = {format(startTime, pattern), format(getLastTimeByDate(modify(startTime, interval * A_DAY)), pattern)};
 						segments.add(segment);
-					}else if(i == (count - 1)){	//最后一段
+					} else if (i == (count - 1)) {	//最后一段
 						Date start = modify(startTime, (interval + 1) * A_DAY * i);
 						//System.out.println("----" + format(start));
-						if(start.getTime() > endTime.getTime()){
-							String[] segment = {format(getFirstTimeByDate(endTime),pattern),format(endTime,pattern)};
+						if (start.getTime() > endTime.getTime()) {
+							String[] segment = {format(getFirstTimeByDate(endTime), pattern), format(endTime, pattern)};
 							segments.add(segment);
-						}else{
-							String[] segment = {format(getFirstTimeByDate(start),pattern),format(endTime,pattern)};
+						} else {
+							String[] segment = {format(getFirstTimeByDate(start), pattern), format(endTime, pattern)};
 							segments.add(segment);
 						}
-					}else{	//中间
+					} else {	//中间
 						Date start = getFirstTimeByDate(modify(startTime, (interval + 1) * A_DAY * i));
 						Date end = getLastTimeByDate(modify(startTime, ((interval + 1) * (i + 1) - 1) * A_DAY));
-						String[] segment = {format(start,pattern),format(end,pattern)};
+						String[] segment = {format(start, pattern), format(end, pattern)};
 						segments.add(segment);
 					}
 				}
